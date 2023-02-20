@@ -53,12 +53,12 @@ class ProductController {
         try {
             const{ id } = req.params;
 
-        await ProductModel.FindByIdAndUpdate(id,req.body);
+        await ProductModel.findByIdAndUpdate(id,req.body);
 
         return res.status(200).json({message:"Product updated successfully."});
 
         } catch (error) {
-
+            console.log(error); 
         return res.status(404).json({message: "Failed to update product."});
 
         }
