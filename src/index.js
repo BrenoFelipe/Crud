@@ -1,3 +1,7 @@
+require('dotenv').config()
+console.log(process.env)
+
+
 const app = require('./app');
 const Loaders = require('./loaders')
 

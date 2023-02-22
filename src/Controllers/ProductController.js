@@ -51,6 +51,21 @@ class ProductController {
     async update(req, res){
 
         try {
+            const {title, description, price } = req.body;
+
+        const productAlreadyExists = await ProductModel.findOne({title});
+
+        if (productAlreadyExists) {
+
+            return res.status(400).json({message:"This name already exists."})
+
+        }
+
+        if(!title || !description || !price){
+
+            return res.status(400).json({message: "Title, Description and Price is required."})
+
+        }
             const{ id } = req.params;
 
         await ProductModel.findByIdAndUpdate(id,req.body);
